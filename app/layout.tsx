@@ -24,7 +24,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body>{children}</body>
+      <body><header style={{ padding: "20px", background: "#333", color: "white" }}>
+  <h2>マガトの個人サイト（練習中）</h2>
+</header>{children}</body>
     </html>
   );
 }
