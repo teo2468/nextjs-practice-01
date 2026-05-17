@@ -1,32 +1,150 @@
+import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import type { Metadata } from 'next';
+import {
+  ics,
+  getICById,
+  getRoute,
+  getAllRoutePairs,
+  calcDiscountedFare,
+} from '@/lib/highway';
+import { FareTabs } from '@/components/highway/FareTabs';
 import styles from './page.module.css';
 
-export default function Home() {
+// ============================================
+// 型定義：URLパラメータの形
+// ============================================
+type Params = {
+  from: string;
+  to: string;
+};
+
+// ============================================
+// 1. generateStaticParams：ビルド時に静的生成するURLパターンを宣言
+// ============================================
+export function generateStaticParams(): Params[] {
+  // lib/highway.ts の getAllRoutePairs() が 29×2=58 ペアを返す
+  return getAllRoutePairs();
+}
+
+// ============================================
+// 2. generateMetadata：各ページのタイトル・description を動的生成
+// ============================================
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<Params>;
+}): Promise<Metadata> {
+  const { from, to } = await params;
+  const fromIC = getICById(from);
+  const toIC = getICById(to);
+
+  if (!fromIC || !toIC) {
+    return { title: 'ルートが見つかりません' };
+  }
+
+  // canonical URL：辞書順で小さい方を正規URLとする
+  // 例: takasaki → nasu と nasu → takasaki のどちらにアクセスしても
+  //     canonical は nasu/takasaki（n < t）になる
+  const [a, b] = [from, to].sort();
+  const canonicalPath = `/highway/${a}/${b}`;
+
+  return {
+    title: `${fromIC.name} → ${toIC.name}`,
+    description: `${fromIC.name}IC（${fromIC.road}）から${toIC.name}IC（${toIC.road}）までの高速道路料金・距離を確認できます。`,
+    alternates: {
+      canonical: canonicalPath,
+    },
+  };
+}
+
+// ============================================
+// 3. ページ本体
+// ============================================
+export default async function RoutePage({
+  params,
+}: {
+  params: Promise<Params>;
+}) {
+  const { from, to } = await params;
+
+  // 不正なパラメータチェック
+  if (from === to) {
+    notFound();
+  }
+
+  const fromIC = getICById(from);
+  const toIC = getICById(to);
+  const route = getRoute(from, to);
+
+  if (!fromIC || !toIC || !route) {
+    notFound();
+  }
+
+  const discountedFare = calcDiscountedFare(route.etc);
+
+  // 反対方向のリンク用
+  const reverseHref = `/highway/${to}/${from}`;
+
   return (
-    <main className={styles.main}>
-      <div className={styles.container}>
-        <header className={styles.header}>
-          <h1 className={styles.title}>nextjs-practice-01</h1>
-          <p className={styles.subtitle}>Next.js学習用サンドボックス</p>
-        </header>
+    <div className={styles.page}>
+      {/* パンくず */}
+      <nav className={styles.breadcrumb}>
+        <Link href="/highway" className={styles.breadcrumbLink}>
+          一覧
+        </Link>
+        <span className={styles.breadcrumbSep}>/</span>
+        <span className={styles.breadcrumbCurrent}>
+          {fromIC.name} → {toIC.name}
+        </span>
+      </nav>
 
-        <div className={styles.divider} />
+      {/* ルートヘッダー */}
+      <header className={styles.routeHeader}>
+        <div className={styles.routeIc}>
+          <div className={styles.icName}>{fromIC.name}</div>
+          <div className={styles.icRoad}>{fromIC.road}</div>
+        </div>
+        <div className={styles.routeArrow}>→</div>
+        <div className={styles.routeIc}>
+          <div className={styles.icName}>{toIC.name}</div>
+          <div className={styles.icRoad}>{toIC.road}</div>
+        </div>
+      </header>
 
-        <section className={styles.section}>
-          <h2 className={styles.sectionTitle}>実装中のもの</h2>
+      {/* 料金タブUI（クライアントコンポーネント） */}
+      <section className={styles.fareSection}>
+        <FareTabs etc={route.etc} discounted={discountedFare} />
+      </section>
 
-          <Link href="/highway" className={styles.card}>
-            <div className={styles.cardIcon}>🛣</div>
-            <div className={styles.cardBody}>
-              <h3 className={styles.cardTitle}>高速道路料金シミュレーター</h3>
-              <p className={styles.cardDescription}>
-                関東圏のICから目的地までの料金を素早く確認
-              </p>
-            </div>
-            <div className={styles.cardArrow}>→</div>
-          </Link>
-        </section>
-      </div>
-    </main>
+      {/* メタ情報 */}
+      <section className={styles.metaSection}>
+        <dl className={styles.metaList}>
+          <div className={styles.metaItem}>
+            <dt className={styles.metaLabel}>距離</dt>
+            <dd className={styles.metaValue}>{route.distance_km} km</dd>
+          </div>
+          <div className={styles.metaItem}>
+            <dt className={styles.metaLabel}>出発IC</dt>
+            <dd className={styles.metaValue}>
+              {fromIC.name}IC<span className={styles.metaSub}>（{fromIC.description}）</span>
+            </dd>
+          </div>
+          <div className={styles.metaItem}>
+            <dt className={styles.metaLabel}>到着IC</dt>
+            <dd className={styles.metaValue}>
+              {toIC.name}IC<span className={styles.metaSub}>（{toIC.description}）</span>
+            </dd>
+          </div>
+        </dl>
+      </section>
+
+      {/* 反対方向ルートへの導線 */}
+      <section className={styles.reverseSection}>
+        <Link href={reverseHref} className={styles.reverseLink}>
+          ← {toIC.name} → {fromIC.name} のルートを見る
+        </Link>
+      </section>
+    </div>
   );
 }
