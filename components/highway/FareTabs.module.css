@@ -1,0 +1,90 @@
+.container {
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.tabBar {
+  display: flex;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fafafa;
+}
+
+.tab {
+  flex: 1;
+  padding: 0.875rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  transition: all 0.15s ease;
+  font-family: inherit;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  color: #1a1a1a;
+  background: #f3f4f6;
+}
+
+.tabActive {
+  color: #2563eb;
+  background: #ffffff;
+  border-bottom-color: #2563eb;
+}
+
+.tabActive:hover {
+  color: #2563eb;
+  background: #ffffff;
+}
+
+.fareDisplay {
+  padding: 2rem 1.5rem;
+  text-align: center;
+}
+
+.fareLabel {
+  font-size: 0.85rem;
+  color: #6b7280;
+  margin-bottom: 0.75rem;
+}
+
+.fareAmount {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.25rem;
+  color: #1a1a1a;
+}
+
+.fareYen {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.fareNumber {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.fareSavings {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.note {
+  margin: 0;
+  padding: 0.875rem 1.25rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+  background: #fafafa;
+  border-top: 1px solid #e5e5e5;
+  line-height: 1.6;
+}

@@ -1,0 +1,176 @@
+[
+  {
+    "from": "takasaki",
+    "to": "nasu",
+    "etc": 2690,
+    "distance_km": 147.5
+  },
+  {
+    "from": "takasaki",
+    "to": "kisarazukaneda",
+    "etc": 5120,
+    "distance_km": 154.5
+  },
+  {
+    "from": "takasaki",
+    "to": "urayasu",
+    "etc": 3710,
+    "distance_km": 141.6
+  },
+  {
+    "from": "takasaki",
+    "to": "odawaranishi",
+    "etc": 4190,
+    "distance_km": 160.9
+  },
+  {
+    "from": "takasaki",
+    "to": "chigasakikaigan",
+    "etc": 4000,
+    "distance_km": 140.8
+  },
+  {
+    "from": "takasaki",
+    "to": "kawaguchiko",
+    "etc": 3700,
+    "distance_km": 157.2
+  },
+  {
+    "from": "takasaki",
+    "to": "nikko",
+    "etc": 2520,
+    "distance_km": 122.7
+  },
+  {
+    "from": "takasaki",
+    "to": "hitachikaihin",
+    "etc": 3110,
+    "distance_km": 164.1
+  },
+  {
+    "from": "takasaki",
+    "to": "usuikaruizawa",
+    "etc": 1270,
+    "distance_km": 60.9
+  },
+  {
+    "from": "tokorozawa",
+    "to": "nasu",
+    "etc": 3910,
+    "distance_km": 174.3
+  },
+  {
+    "from": "tokorozawa",
+    "to": "kisarazukaneda",
+    "etc": 3140,
+    "distance_km": 121.4
+  },
+  {
+    "from": "tokorozawa",
+    "to": "urayasu",
+    "etc": 2300,
+    "distance_km": 55
+  },
+  {
+    "from": "tokorozawa",
+    "to": "odawaranishi",
+    "etc": 3500,
+    "distance_km": 120.1
+  },
+  {
+    "from": "tokorozawa",
+    "to": "chigasakikaigan",
+    "etc": 3340,
+    "distance_km": 100
+  },
+  {
+    "from": "tokorozawa",
+    "to": "kawaguchiko",
+    "etc": 3110,
+    "distance_km": 116.4
+  },
+  {
+    "from": "tokorozawa",
+    "to": "nikko",
+    "etc": 3770,
+    "distance_km": 149.5
+  },
+  {
+    "from": "tokorozawa",
+    "to": "hitachikaihin",
+    "etc": 3800,
+    "distance_km": 139.3
+  },
+  {
+    "from": "tokorozawa",
+    "to": "usuikaruizawa",
+    "etc": 2710,
+    "distance_km": 121.8
+  },
+  {
+    "from": "iruma",
+    "to": "nasu",
+    "etc": 3910,
+    "distance_km": 170.9
+  },
+  {
+    "from": "iruma",
+    "to": "kisarazukaneda",
+    "etc": 4220,
+    "distance_km": 154.8
+  },
+  {
+    "from": "iruma",
+    "to": "urayasu",
+    "etc": 2970,
+    "distance_km": 93.4
+  },
+  {
+    "from": "iruma",
+    "to": "odawaranishi",
+    "etc": 2470,
+    "distance_km": 86.7
+  },
+  {
+    "from": "iruma",
+    "to": "chigasakikaigan",
+    "etc": 2290,
+    "distance_km": 66.6
+  },
+  {
+    "from": "iruma",
+    "to": "kawaguchiko",
+    "etc": 2030,
+    "distance_km": 83
+  },
+  {
+    "from": "iruma",
+    "to": "nikko",
+    "etc": 3670,
+    "distance_km": 146.1
+  },
+  {
+    "from": "iruma",
+    "to": "hitachikaihin",
+    "etc": 4070,
+    "distance_km": 161.6
+  },
+  {
+    "from": "iruma",
+    "to": "usuikaruizawa",
+    "etc": 2700,
+    "distance_km": 118.2
+  },
+  {
+    "from": "takasaki",
+    "to": "tokorozawa",
+    "etc": 1990,
+    "distance_km": 77.6
+  },
+  {
+    "from": "takasaki",
+    "to": "iruma",
+    "etc": 1880,
+    "distance_km": 74.2
+  }
+]

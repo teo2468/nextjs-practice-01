@@ -1,0 +1,86 @@
+[
+  {
+    "id": "takasaki",
+    "name": "高崎",
+    "kana": "タカサキ",
+    "road": "E17 関越道",
+    "description": "群馬県・関越道の主要IC"
+  },
+  {
+    "id": "nasu",
+    "name": "那須",
+    "kana": "ナス",
+    "road": "E4 東北道",
+    "description": "那須高原・那須塩原方面"
+  },
+  {
+    "id": "kisarazukaneda",
+    "name": "木更津金田",
+    "kana": "キサラヅカネダ",
+    "road": "E14 アクアライン",
+    "description": "海ほたるPA方面（東京湾アクアライン経由・木更津側）"
+  },
+  {
+    "id": "urayasu",
+    "name": "浦安",
+    "kana": "ウラヤス",
+    "road": "B 首都高湾岸線",
+    "description": "東京ディズニーリゾート方面"
+  },
+  {
+    "id": "odawaranishi",
+    "name": "小田原西",
+    "kana": "オダワラニシ",
+    "road": "E85 西湘BP",
+    "description": "小田原・熱海・箱根方面"
+  },
+  {
+    "id": "chigasakikaigan",
+    "name": "茅ヶ崎海岸",
+    "kana": "チガサキカイガン",
+    "road": "E84 新湘南BP",
+    "description": "湘南・茅ヶ崎海岸方面"
+  },
+  {
+    "id": "kawaguchiko",
+    "name": "河口湖",
+    "kana": "カワグチコ",
+    "road": "E68 東富士五湖道路",
+    "description": "富士五湖・河口湖方面"
+  },
+  {
+    "id": "nikko",
+    "name": "日光",
+    "kana": "ニッコウ",
+    "road": "E81 日光宇都宮道路",
+    "description": "日光・中禅寺湖方面"
+  },
+  {
+    "id": "hitachikaihin",
+    "name": "ひたち海浜公園",
+    "kana": "ヒタチカイヒンコウエン",
+    "road": "E50 北関東道",
+    "description": "ネモフィラ・ロックインジャパン会場方面"
+  },
+  {
+    "id": "usuikaruizawa",
+    "name": "碓氷軽井沢",
+    "kana": "ウスイカルイザワ",
+    "road": "E18 上信越道",
+    "description": "軽井沢・旧軽方面"
+  },
+  {
+    "id": "tokorozawa",
+    "name": "所沢",
+    "kana": "トコロザワ",
+    "road": "E17 関越道",
+    "description": "埼玉県・関越道の都心側IC"
+  },
+  {
+    "id": "iruma",
+    "name": "入間",
+    "kana": "イルマ",
+    "road": "C4 圏央道",
+    "description": "埼玉県・圏央道のIC"
+  }
+]
