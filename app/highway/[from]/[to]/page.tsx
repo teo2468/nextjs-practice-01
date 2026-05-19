@@ -1,3 +1,4 @@
+import { Breadcrumb } from '@/components/Breadcrumb';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import type { Metadata } from 'next';
@@ -83,16 +84,14 @@ export default async function RoutePage({
 
   return (
     <div className={styles.page}>
-      {/* パンくず */}
-      <nav className={styles.breadcrumb}>
-        <Link href="/highway" className={styles.breadcrumbLink}>
-          一覧
-        </Link>
-        <span className={styles.breadcrumbSep}>/</span>
-        <span className={styles.breadcrumbCurrent}>
-          {fromIC.name} → {toIC.name}
-        </span>
-      </nav>
+     {/* パンくず */}
+<Breadcrumb
+  items={[
+    { label: '一覧', href: '/highway' },
+    { label: `${fromIC.name}IC発`, href: `/highway/${from}` },
+    { label: `${fromIC.name} → ${toIC.name}` },
+  ]}
+/>
 
       {/* ルートヘッダー */}
       <header className={styles.routeHeader}>
