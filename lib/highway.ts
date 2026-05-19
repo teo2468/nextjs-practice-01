@@ -47,28 +47,41 @@ export function getICById(id: string): IC | undefined {
 
 /**
  * from と to のIDからルート情報を取得する
- * 双方向対応：A→B が登録されていれば B→A もヒットする
+ * 順方向のみ対応（B→A は別ルートとして扱わない）
  */
 export function getRoute(from: string, to: string): Route | undefined {
-  return routes.find(
-    (r) =>
-      (r.from === from && r.to === to) ||
-      (r.from === to && r.to === from)
-  );
+  return routes.find((r) => r.from === from && r.to === to);
 }
 
 /**
- * 全ルートを双方向に展開した配列を返す
- * 元データの29ペアを 29×2 = 58 ペアに展開
- * generateStaticParams で使う
+ * 全ルート（順方向のみ）の配列を返す
+ * routes.json の 29 ルートをそのまま generateStaticParams 用の形に変換
  */
 export function getAllRoutePairs(): { from: string; to: string }[] {
-  const pairs: { from: string; to: string }[] = [];
-  for (const r of routes) {
-    pairs.push({ from: r.from, to: r.to });
-    pairs.push({ from: r.to, to: r.from });
-  }
-  return pairs;
+  return routes.map((r) => ({ from: r.from, to: r.to }));
+}
+
+// ============================================
+// 中間ページ用ヘルパー
+// ============================================
+
+/**
+ * 出発側に登場する全 IC の id 配列を返す
+ * 中間ページ /highway/[from] の generateStaticParams で使う
+ * 現状：takasaki, tokorozawa, iruma の 3 個
+ */
+export function getAllFromICIds(): string[] {
+  // Set で重複排除してから配列に戻す
+  const ids = new Set(routes.map((r) => r.from));
+  return Array.from(ids);
+}
+
+/**
+ * 指定された出発IC から行ける全ルートを返す
+ * 中間ページの本文で「目的地一覧」を表示するのに使う
+ */
+export function getRoutesFrom(fromId: string): Route[] {
+  return routes.filter((r) => r.from === fromId);
 }
 
 // ============================================
