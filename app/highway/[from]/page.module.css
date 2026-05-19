@@ -1,0 +1,119 @@
+.page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 16px;
+}
+
+/* パンくず */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  margin-bottom: 24px;
+  color: #666;
+}
+
+.breadcrumbLink {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.breadcrumbLink:hover {
+  text-decoration: underline;
+}
+
+.breadcrumbSep {
+  color: #999;
+}
+
+.breadcrumbCurrent {
+  color: #333;
+  font-weight: 500;
+}
+
+/* IC ヘッダー */
+.icHeader {
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 20px;
+  margin-bottom: 24px;
+}
+
+.icName {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+}
+
+.icRoad {
+  font-size: 16px;
+  color: #555;
+  margin: 0 0 8px 0;
+}
+
+.icDescription {
+  font-size: 14px;
+  color: #777;
+  margin: 0;
+}
+
+/* 目的地セクション */
+.destinationSection {
+  margin-top: 24px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+.destinationList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.destinationItem {
+  margin: 0;
+}
+
+.destinationLink {
+  display: block;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s ease;
+}
+
+.destinationLink:hover {
+  background: #e9ecef;
+}
+
+.destinationName {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.destinationMeta {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+  color: #666;
+  flex-wrap: wrap;
+}
+
+.destinationDistance {
+  color: #555;
+}
+
+.destinationFare {
+  font-weight: 600;
+  color: #d97706;
+}
