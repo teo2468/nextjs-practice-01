@@ -2,7 +2,9 @@
   padding: 1rem 0;
 }
 
-.breadcrumb {
+.routeHeader {
+  display: flex;
+ .breadcrumb {
   font-size: 0.85rem;
   color: #6b7280;
   margin-bottom: 1.5rem;
@@ -19,18 +21,7 @@
 .breadcrumbLink:hover {
   text-decoration: underline;
 }
-
-.breadcrumbSep {
-  color: #d1d5db;
-}
-
-.breadcrumbCurrent {
-  color: #1a1a1a;
-}
-
-.routeHeader {
-  display: flex;
-  align-items: center;
+ align-items: center;
   justify-content: center;
   gap: 1.5rem;
   padding: 2rem 1rem;
