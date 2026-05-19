@@ -23,7 +23,7 @@ type Params = {
 // 1. generateStaticParams：ビルド時に静的生成するURLパターンを宣言
 // ============================================
 export function generateStaticParams(): Params[] {
-  // lib/highway.ts の getAllRoutePairs() が 29×2=58 ペアを返す
+  // lib/highway.ts の getAllRoutePairs() が 29 ペア（順方向のみ）を返す
   return getAllRoutePairs();
 }
 
@@ -43,11 +43,9 @@ export async function generateMetadata({
     return { title: 'ルートが見つかりません' };
   }
 
-  // canonical URL：辞書順で小さい方を正規URLとする
-  // 例: takasaki → nasu と nasu → takasaki のどちらにアクセスしても
-  //     canonical は nasu/takasaki（n < t）になる
-  const [a, b] = [from, to].sort();
-  const canonicalPath = `/highway/${a}/${b}`;
+  // canonical URL：このページのURLそのもの
+  // 逆方向ページは存在しないので、重複排除のための並べ替えは不要
+  const canonicalPath = `/highway/${from}/${to}`;
 
   return {
     title: `${fromIC.name} → ${toIC.name}`,
@@ -82,9 +80,6 @@ export default async function RoutePage({
   }
 
   const discountedFare = calcDiscountedFare(route.etc);
-
-  // 反対方向のリンク用
-  const reverseHref = `/highway/${to}/${from}`;
 
   return (
     <div className={styles.page}>
@@ -137,13 +132,6 @@ export default async function RoutePage({
             </dd>
           </div>
         </dl>
-      </section>
-
-      {/* 反対方向ルートへの導線 */}
-      <section className={styles.reverseSection}>
-        <Link href={reverseHref} className={styles.reverseLink}>
-          ← {toIC.name} → {fromIC.name} のルートを見る
-        </Link>
       </section>
     </div>
   );
