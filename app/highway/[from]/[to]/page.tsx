@@ -6,6 +6,7 @@ import {
   ics,
   getICById,
   getRoute,
+  getRoutesFrom,
   getAllRoutePairs,
   calcDiscountedFare,
 } from '@/lib/highway';
@@ -82,16 +83,19 @@ export default async function RoutePage({
 
   const discountedFare = calcDiscountedFare(route.etc);
 
+  // 関連ルート：同じ from で、現在見ているルート以外
+  const relatedRoutes = getRoutesFrom(from).filter((r) => r.to !== to);
+
   return (
     <div className={styles.page}>
-     {/* パンくず */}
-<Breadcrumb
-  items={[
-    { label: '一覧', href: '/highway' },
-    { label: `${fromIC.name}IC発`, href: `/highway/${from}` },
-    { label: `${fromIC.name} → ${toIC.name}` },
-  ]}
-/>
+      {/* パンくず */}
+      <Breadcrumb
+        items={[
+          { label: '一覧', href: '/highway' },
+          { label: `${fromIC.name}IC発`, href: `/highway/${from}` },
+          { label: `${fromIC.name} → ${toIC.name}` },
+        ]}
+      />
 
       {/* ルートヘッダー */}
       <header className={styles.routeHeader}>
@@ -132,6 +136,36 @@ export default async function RoutePage({
           </div>
         </dl>
       </section>
+
+      {/* 関連ルート（同じ出発地） */}
+      {relatedRoutes.length > 0 && (
+        <section className={styles.relatedSection}>
+          <h2 className={styles.relatedHeading}>
+            {fromIC.name}発の他のルート
+          </h2>
+          <ul className={styles.relatedList}>
+            {relatedRoutes.map((r) => {
+              const relatedToIC = getICById(r.to);
+              if (!relatedToIC) return null;
+              return (
+                <li key={r.to} className={styles.relatedItem}>
+                  <Link
+                    href={`/highway/${r.from}/${r.to}`}
+                    className={styles.relatedLink}
+                  >
+                    <span className={styles.relatedRouteName}>
+                      {fromIC.name} → {relatedToIC.name}
+                    </span>
+                    <span className={styles.relatedFare}>
+                      ETC {r.etc.toLocaleString()}円
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
     </div>
   );
 }

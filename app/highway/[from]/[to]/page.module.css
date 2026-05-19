@@ -129,3 +129,61 @@
 .reverseLink:hover {
   text-decoration: underline;
 }
+
+/* ============================================
+   関連ルートセクション
+   ============================================ */
+.relatedSection {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid #e5e5e5;
+}
+
+.relatedHeading {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin: 0 0 1rem 0;
+  color: #1a1a1a;
+}
+
+.relatedList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.relatedItem {
+  margin: 0;
+}
+
+.relatedLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 1.25rem;
+  background: #fafafa;
+  border: 1px solid #e5e5e5;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #1a1a1a;
+  transition: background 0.15s ease;
+}
+
+.relatedLink:hover {
+  background: #f3f4f6;
+}
+
+.relatedRouteName {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #2563eb;
+}
+
+.relatedFare {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
